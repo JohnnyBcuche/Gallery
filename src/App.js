@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Users from './components/Users';
-import Posts from './components/Posts';
+import Users from './components/Users/Users';
+import Posts from './components/Posts/Posts';
 import Gallery from './components/Gallery/Gallery';
 
 import './App.css';
