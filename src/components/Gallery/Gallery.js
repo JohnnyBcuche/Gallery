@@ -4,26 +4,46 @@ import axios from 'axios';
 import './Gallery.css';
 
 class Gallery extends Component {
-    state = {
-        albums: []
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            albums: [],
+            visible: 5
+        };
+        
+        this.loadMore = this.loadMore.bind(this);
+    }
+
+    loadMore() {
+        this.setState((prev) => {
+            return {visible: prev.visible + 5};
+        });
     }
 
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/albums')
         .then(res => {
-            const albums = res.data.slice(0,20);
+            const albums = res.data;
             this.setState({ albums });
         })
     }
 
     render() {
         return(
-            <div className="albums">
-                { this.state.albums.map(album => 
-                    <div className="album">
-                        <h2>{album.title}</h2>
+            <div>
+                <div className="albums">
+                    { this.state.albums.slice(0, this.state.visible).map(album => 
+                        <div key={album.id} className="album">
+                            <h2>{album.title}</h2>
+                        </div>
+                    ) }
+                </div>
+                {this.state.visible < this.state.albums.length &&
+                    <div className="parent-button">
+                        <button onClick={this.loadMore} className="button" type="button">Load more</button>
                     </div>
-                ) }
+                }
             </div>
         )
     }
