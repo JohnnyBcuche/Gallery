@@ -26,7 +26,7 @@
 
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
-import { UserList } from './Form';
+import { UserList, PostList, PostEdit, PostCreate } from './Form';
 import { createMuiTheme } from '@material-ui/core/styles';
 import jsonServerProvider from 'ra-data-json-server';
 
@@ -39,6 +39,7 @@ const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
 // const Contact = () => <Admin dataProvider={dataProvider} />;
 const Contact = () => (
     <Admin theme={theme} dataProvider={dataProvider}>
+      <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} />
       <Resource name="users" list={UserList} />
     </Admin>
 );
