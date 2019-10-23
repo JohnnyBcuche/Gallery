@@ -6,6 +6,7 @@ import Users from './components/Users/Users';
 import Posts from './components/Posts/Posts';
 import Gallery from './components/Gallery/Gallery';
 import Contact from './components/Contact/Contact';
+import Login from './Login';
 
 import './App.css';
 
@@ -37,6 +38,9 @@ class App extends Component {
               <li>
                 <Link to="/contact">Contact</Link>
               </li>
+              <li>
+                <Link to="/login">ૐ Login</Link>
+              </li>
             </ul>
           </div>
         
@@ -47,6 +51,7 @@ class App extends Component {
             <Route path="/posts" component={Posts} />
             <Route path="/gallery" component={Gallery} />
             <Route path="/contact" component={Contact} />
+            <Route path="/login" component={Login} />
           </div>
           
         </div>

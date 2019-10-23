@@ -78,8 +78,12 @@ export const PostList = props => (
   </List>
 );
 
+const PostTitle = ({ record }) => {
+  return <span>Post {record ? `"${record.title}"` : ''}</span>;
+};
+
 export const PostEdit = props => (
-  <Edit {...props}>
+  <Edit title={<PostTitle />} {...props}>
       <SimpleForm>
           <DisabledInput source="id" />
           <ReferenceInput source="userId" reference="users">
