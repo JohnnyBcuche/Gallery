@@ -6,7 +6,7 @@ import Users from './components/Users/Users';
 import Posts from './components/Posts/Posts';
 import Gallery from './components/Gallery/Gallery';
 import Contact from './components/Contact/Contact';
-import Login from './Login';
+import Login from './LoginForm';
 
 import './App.css';
 
@@ -35,9 +35,9 @@ class App extends Component {
               <li>
                 <Link to="/gallery">Gallery</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/contact">Contact</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/login">ૐ Login</Link>
               </li>
