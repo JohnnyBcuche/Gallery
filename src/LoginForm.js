@@ -7,21 +7,24 @@ class LogOut extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: null
+      user: null,
+      pass: null
     }
   }
 
   signIn(username, password) {
     this.setState({
       user: {
-        username,
-        password,
+        username
+      },
+      pass: {
+        password
       }
     })
   }
 
   signOut() {
-    this.setState({ user:null })
+    this.setState({ user:null, pass:null })
   }
 
   render() {
@@ -32,6 +35,7 @@ class LogOut extends Component {
           (this.state.user) ?
           <Welcome
             user={ this.state.user }
+            pass={ this.state.pass }
             onSignOut={ this.signOut.bind(this) }
           />
           :
