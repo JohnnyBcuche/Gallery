@@ -9,6 +9,7 @@ class Gallery extends Component {
 
         this.state = {
             albums: [],
+            photos: [],
             visible: 5
         };
         
@@ -27,15 +28,21 @@ class Gallery extends Component {
             const albums = res.data;
             this.setState({ albums });
         })
+
+        axios.get('https://jsonplaceholder.typicode.com/photos')
+        .then(res => {
+            const photos = res.data;
+            this.setState({ photos });
+        })
     }
 
     render() {
         return(
             <div>
-                <div className="albums">
+                <div className="items">
                     { this.state.albums.slice(0, this.state.visible).map(album => 
                         <div key={album.id} className="album">
-                            <h2>{album.title}</h2>
+                            <h2>{album.id}. {album.title}</h2>
                         </div>
                     ) }
                 </div>
@@ -44,6 +51,14 @@ class Gallery extends Component {
                         <button onClick={this.loadMore} className="button" type="button">Load more</button>
                     </div>
                 }
+                <div className="items">
+                    { this.state.photos.slice(0, this.state.visible).map(photo => 
+                        <div key={photo.albumId}>
+                            <img src={photo.url} alt=""/>
+                            <h2>{photo.id}</h2>
+                        </div>
+                    ) }
+                </div>
             </div>
         )
     }

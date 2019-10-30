@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.component {
+  width: 40%;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 5px 10px 15px #888;
+}

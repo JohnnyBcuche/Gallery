@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 
 import './Practice.css';
 
+function ListItem(props) {
+  return <li>{props.value}</li>
+}
+
 class Practice extends Component {
   token = null;
   state = {
@@ -45,20 +49,34 @@ class Practice extends Component {
   }
 
   render() {
+    const numbers = [ 1, 2, 3, 4, 5 ];
+    const listItems = numbers.map(number => 
+      <ListItem
+        key={ number.toString() }
+        value={ number }
+      />
+    );
     return (
-      <form>
-        <input
-          type="text"
-          className="search-box"
-          placeholder="Search for..."
-          onChange={this.onChange}
-        />
-        {this.state.people.map(person => (
-          <ul key={person.name}>
-            <li>{person.name}</li>
+      <div className="container">
+        <form className="component">
+          <input
+            type="text"
+            className="search-box"
+            placeholder="Search for..."
+            onChange={this.onChange}
+          />
+          {this.state.people.map(person => (
+            <ul key={person.name}>
+              <li>{person.name}</li>
+            </ul>
+          ))}
+        </form>
+        <div className="component">
+          <ul>
+            { listItems }
           </ul>
-        ))}
-      </form>
+        </div>
+      </div>
     );
   }
 }

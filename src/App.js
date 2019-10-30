@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Practice from './components/Practice/Practice';
+import Example from './components/Example/Example';
 import Users from './components/Users/Users';
 import Posts from './components/Posts/Posts';
 import Gallery from './components/Gallery/Gallery';
@@ -26,6 +27,9 @@ class App extends Component {
               <li>
                 <Link to="/practice">Practice</Link>
               </li>
+              {/* <li>
+                <Link to="/example">Example</Link>
+              </li> */}
               <li>
                 <Link to="/users">Users</Link>
               </li>
@@ -47,6 +51,7 @@ class App extends Component {
           <div className="content">
             <Route exact path="/" component={Home} />
             <Route path='/practice' component={Practice} />
+            <Route path='/example' component={Example} />
             <Route path="/users" component={Users} />
             <Route path="/posts" component={Posts} />
             <Route path="/gallery" component={Gallery} />
