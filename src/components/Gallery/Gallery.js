@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import './Gallery.css';
 
@@ -10,7 +11,8 @@ class Gallery extends Component {
         this.state = {
             albums: [],
             photos: [],
-            visible: 5
+            visible: 5,
+            selectAlbum: null
         };
         
         this.loadMore = this.loadMore.bind(this);
@@ -36,12 +38,17 @@ class Gallery extends Component {
         })
     }
 
+    setAlbumState(id) {
+        this.setState({ selectAlbum: id });
+        console.log(this.state.selectAlbum)
+    }
+
     render() {
         return(
             <div>
                 <div className="items">
                     { this.state.albums.slice(0, this.state.visible).map(album => 
-                        <div key={album.id} className="album">
+                        <div key={album.id} className="album" onClick={() => this.setAlbumState(album.id)}>
                             <h2>{album.id}. {album.title}</h2>
                         </div>
                     ) }
@@ -52,12 +59,14 @@ class Gallery extends Component {
                     </div>
                 }
                 <div className="items">
-                    { this.state.photos.slice(0, this.state.visible).map(photo => 
-                        <div key={photo.albumId}>
-                            <img src={photo.url} alt=""/>
-                            <h2>{photo.id}</h2>
-                        </div>
-                    ) }
+                    { this.state.photos.map(photo => {
+                        if(photo.albumId === this.state.selectAlbum)
+                            return(<div key={photo.id}>
+                                        <img src={photo.url} alt=""/>
+                                        <h2>{photo.albumId}</h2>
+                                    </div>)
+                        return null
+                    } ) }
                 </div>
             </div>
         )
