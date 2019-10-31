@@ -40,7 +40,7 @@ class Gallery extends Component {
 
     setAlbumState(id) {
         this.setState({ selectAlbum: id });
-        console.log(this.state.selectAlbum)
+        // console.log(this.state.selectAlbum)
     }
 
     render() {
@@ -53,7 +53,7 @@ class Gallery extends Component {
                         </div>
                     ) }
                 </div>
-                {this.state.visible < this.state.albums.length &&
+                { this.state.visible < this.state.albums.length &&
                     <div className="parent-button">
                         <button onClick={this.loadMore} className="button" type="button">Load more</button>
                     </div>
@@ -61,11 +61,16 @@ class Gallery extends Component {
                 <div className="items">
                     { this.state.photos.map(photo => {
                         if(photo.albumId === this.state.selectAlbum)
-                            return(<div key={photo.id}>
-                                        <img src={photo.url} alt=""/>
-                                        <h2>{photo.albumId}</h2>
-                                    </div>)
-                        return null
+                            return(
+                                <div className="frame" key={photo.id}>
+                                    <img className="photo" src={photo.url} alt="img"/>
+                                    <div className="items">
+                                        <p><strong>ID:</strong> {photo.id}</p>
+                                        <p><strong>Album ID:</strong> {photo.albumId}</p>
+                                    </div>
+                                </div>
+                            );
+                        return null;
                     } ) }
                 </div>
             </div>

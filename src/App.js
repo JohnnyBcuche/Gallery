@@ -17,13 +17,12 @@ class App extends Component {
       <Router>
         <div>
           <div id="navbar" className="sticky">
-            <div className="logo">
-              <img src="https://sounder.fm/img/logo-color.png" alt="" height="35" />
-            </div>
+            <Link to="/">
+              <div className="logo">
+                <img src="https://sounder.fm/img/logo-color.png" alt="" height="35" />
+              </div>
+            </Link>
             <ul className="menu">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
               <li>
                 <Link to="/practice">Practice</Link>
               </li>
